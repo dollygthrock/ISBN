@@ -22,5 +22,19 @@ class TestISBN < Minitest::Test
 		assert_equal(false,valid_isbn?("12345678  "))
 	end
 
+	
+	def test_valid_10_isbn_number_with_hyphens_is_valid
+		assert_equal(true,valid_isbn?("047-19-586-97"))
+		assert_equal(true,valid_isbn?("047-19586-97"))
+	end
+
+	def test_valid_10_isbn_number_with_hyphens_and_spaces_is_valid
+		assert_equal(true,valid_isbn?("047-19 586-97"))
+		assert_equal(true,valid_isbn?("047  19586-97  "))
+	end
+	
+
+
+
 
 end 
