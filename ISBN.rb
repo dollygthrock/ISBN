@@ -10,12 +10,11 @@ def valid_isbn?(isbn_string)
 end
 
 def contains_x(isbn_string)
-	isbn_array = isbn.split(//,)
-	if isbn_include?("x") || isbn_include?("X")
+	isbn_number_array = isbn.split(//,)
+	if isbn[9] == "x" || isbn[10] == "X"
 		isbn[9] == 10
-		true
-	else
-		false
+	end
+	isbn_number_array
 end
 
 def check_last_digit_is_x_is_valid(isbn_string)
@@ -27,7 +26,7 @@ end
 sum = 0
 array.each.with_index do |value,index|
 break if index == 9
-	sum += value *(index +1)
+	sum += value * (index +1)
 end
 
 check_digit = sum % 11
@@ -36,8 +35,10 @@ if check_digit == array[9]
 else
 	false
 end
+
 check_digit == array [9]
 
+end
 
 end
 
