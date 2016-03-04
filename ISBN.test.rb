@@ -22,7 +22,6 @@ class TestISBN < Minitest::Test
 		assert_equal(false,valid_isbn?("12345678  "))
 	end
 
-	
 	def test_valid_10_isbn_number_with_hyphens_is_valid
 		assert_equal(true,valid_isbn?("047-19-586-97"))
 		assert_equal(true,valid_isbn?("047-19586-97"))
@@ -33,7 +32,13 @@ class TestISBN < Minitest::Test
 		assert_equal(true,valid_isbn?("047  19586-97  "))
 	end
 	
+	def test_if_10_isbn_number_has_x_as_last_digit_still_passes
+		assert_equal(true,valid_isbn?("123456789x"))
+	end
 
+	def test_10_digits_is_valid
+		assert_equal(true,check_digit["1","2","8","5","6","5","9","0","X"])
+	end
 
 
 
