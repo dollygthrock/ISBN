@@ -70,11 +70,13 @@ end
 
 
 #once it gets to the ninth position, the loop should break
-#I don't understand what += means?  I didn't understand the 
-#explanation or wasn't given??
+#I don't understand what += does: so, it adds the operand on the right 
+#to the one on the left, then assigns that resulting value to
+#to the operand on the left? 
 # so if my value is 1 at the first index which is really 0, first 
-#time through is 1 * (0 + 1); next time through at second index if number
-#is 5, say, what happens?  
+#time through is 1 * (0 + 1); next time through at second index which
+#would be 1, and  if number
+#is 5, say, what happens in English?  
 
 check_digit = sum % 11
 if check_digit == array[9]

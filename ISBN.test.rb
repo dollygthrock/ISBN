@@ -37,11 +37,12 @@ class TestISBN < Minitest::Test
 	end
 
 	def test_10_digits_is_valid
-		assert_equal(true,check_last_digit_is_x_is_valid("128516590X"))
+		assert_equal(true,valid_isbn?("1285165901"))
 	end
 
 	def test_13_digits_is_valid
-		assert_equal(true,(""))
+		assert_equal(true,valid_isbn?("123456789012x"))
+		assert_equal(true,valid_isbn?("131313131313x"))
 	end
 
 end
