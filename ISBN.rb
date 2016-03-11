@@ -21,7 +21,7 @@ def contains_x(isbn_string)
 end
 
 def check_digit_13_is_valid(isbn_string)
-	arry = []
+	array = []
 	isbn_string = isbn_string.split("")
 		isbn_string.each do [value]
 		array << value.to_i
