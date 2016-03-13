@@ -45,14 +45,50 @@ class TestIsbnChecker < Minitest::Test
 
 	def test_multiply_array_by_1_and_3
 		assert_equal([1,3,1,3,1,3], multiply_array(["1","1","1","1","1","1"]))
+		assert_equal([2,9,4,15,6], multiply_array(["2","3","4","5","6"]))
 	end
 
-	def test_sum_items_in_an_array
-		assert_equal(10, sum_of_items([1,2,3,4]))
+	def test_sum_all_but_last_items_in_an_array
+		assert_equal(6, sum_of_items([1,2,3,4]))
+		assert_equal(14,sum_of_items([2,3,4,5,6]))
 	end
 
-	def modulus_ten_of_the_number
-		assert_equal(#function that returns modulus 10)
-		#subtract the value from 10
+	def test_modulus_10_subtraction_result
+		assert_equal(4,subtraction_of_ten(26))
+		assert_equal(0,subtraction_of_ten(10))
+	end
+
+	def test_isbn13_checksum
+		assert_equal(true, valid_isbn13?("9780470059029"))
+		assert_equal(true, valid_isbn13?("9780131495050"))
+	end
+
+	def test_isbn10_multiply_sum
+		assert_equal(232,isbn10("7421394761"))
+	end 
+
+	def test_isbn10_mod_11
+		assert_equal(1,isbn10_mod_11(232))
+		assert_equal(10,isbn10_mod_11(241))
+		assert_equal(4,isbn10_mod_11(532))
+	end
+
+	def test_isbn10_containing_x
+		assert_equal(true,valid_isbn10?("877195869x"))
+		assert_equal(false,valid_isbn10?("877195869$"))
+	end
+
+	def test_all_isbn_numbers_valid_or_invalid
+		assert_equal(false,valid_isbn?("4780470059029"))
+		assert_equal(false,valid_isbn?("0-321@14653-0"))
+		#assert_equal(false,valid_isbn?("877195x869"))
+		assert_equal(false,valid_isbn?(""))
+		assert_equal(false,valid_isbn?(" "))
+		assert_equal(false,valid_isbn?("-"))
+	end 
+
+	def test_non_numeric_characters
+		assert_equal(true,"877195x869")
+	end
 
 end
