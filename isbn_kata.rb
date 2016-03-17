@@ -48,37 +48,6 @@ def valid_isbn13?(string)
 		false
 	end
 end
- 
-
-def isbn10(string)
-	product = 0
-	isbn_array_10 = convert_string_to_array(string)
-	isbn_array_10.each_with_index do|value,index|
-		value = value.to_i
-		break if index == 9
-		product += value * (index + 1)
-	end
-	product
-end
-
-
-def isbn10_mod_11(number)
-	checksum = number % 11
-end
-
-
-def valid_isbn10?(number)
-	product = isbn10(number)
-	checksum = isbn10_mod_11(product)
-		if checksum == 10 && number[-1].upcase == "X"
-			true
-		elsif checksum == number[-1].to_i
-			true
-		else
-			false
-		end
-
-end 
 
 
 def multiply_array(input_array)
@@ -112,6 +81,37 @@ def subtraction_of_ten(number)
  	 final_result = mod_result % 10
 end
 
+
+
+def valid_isbn10?(number)
+	product = isbn10(number)
+	checksum = isbn10_mod_11(product)
+		if checksum == 10 && number[-1].upcase == "X" 
+			true
+		elsif checksum == number[-1].to_i
+			true
+		else
+			false
+		end
+
+end 
+
+
+def isbn10(string)
+	product = 0
+	isbn_array_10 = convert_string_to_array(string)
+	isbn_array_10.each_with_index do|value,index|
+		value = value.to_i
+		break if index == 9
+		product += value * (index + 1)
+	end
+	product
+end
+
+
+def isbn10_mod_11(number)
+	checksum = number % 11
+end
 
 
 
