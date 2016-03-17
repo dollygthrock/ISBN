@@ -1,9 +1,21 @@
 
 
-def valid_isbn?(input_string)
+def valid_isbn(input_string)
 	remove_invalid_characters(input_string)
 	correct_length?(input_string)
 end
+
+
+def remove_invalid_characters(input_string)
+	input_string.delete!(" ")
+	input_string.delete!("-")
+end
+
+
+def convert_string_to_array(string)
+	string.split("")
+end
+
 
 def correct_length?(input_string)
 	if input_string.length == 10 
@@ -15,14 +27,14 @@ def correct_length?(input_string)
 	end
 end
 
-def non_numeric_characters(string)
-	if string =~ /\D/
-		true
-	else
-		false
-	end
-end 
 
+def non_numeric_characters?(invalid_string)
+		if invalid_string[0...8] =~ /\D/
+			false
+		else 
+			true
+		end
+end 
 
 
 def valid_isbn13?(string)
@@ -36,8 +48,7 @@ def valid_isbn13?(string)
 		false
 	end
 end
-
-def 
+ 
 
 def isbn10(string)
 	product = 0
@@ -50,9 +61,11 @@ def isbn10(string)
 	product
 end
 
+
 def isbn10_mod_11(number)
 	checksum = number % 11
 end
+
 
 def valid_isbn10?(number)
 	product = isbn10(number)
@@ -66,11 +79,6 @@ def valid_isbn10?(number)
 		end
 
 end 
-
-
-def convert_string_to_array(string)
-	string.split("")
-end
 
 
 def multiply_array(input_array)
@@ -97,6 +105,7 @@ def sum_of_items(array_of_numbers)
 	sum
 end
 
+
 def subtraction_of_ten(number)
  	 result = number % 10
  	 mod_result = 10 - result
@@ -104,10 +113,6 @@ def subtraction_of_ten(number)
 end
 
 
-def remove_invalid_characters(input_string)
-	input_string.delete!(" ")
-	input_string.delete!("-")
-end
 
 
 
