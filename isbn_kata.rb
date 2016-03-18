@@ -1,45 +1,42 @@
 
 
 def valid_isbn(input_string)
-	remove_invalid_characters(input_string)
-	correct_length?(input_string)
-	# I feel like I need to call other functions to here??? It's
-	# missing checking for the non-digit in the middle 
-	# non_numeric_characters
+	string_without_spaces_and_hyphens = remove_invalid_characters(input_string)
+	correct_length?(string_without_spaces_and_hyphens)
 end
 
 
 def remove_invalid_characters(input_string)
-	input_string.delete!(" ")
-	input_string.delete!("-")
+	string_without_spaces = input_string.delete(" ")
+	delete_hyphens_without_spaces = string_without_spaces.delete("-")
 end
 
 
+def non_numeric_characters?(string)
+	if string =~ /\D/ 	
+		true
+	else 
+		false
+	end
+end 
+
 def convert_string_to_array(string)
-	string.split("")
+		string.split("")
 end
 
 
 def correct_length?(input_string)
-	if input_string.length == 10 
-		true
-	elsif input_string.length == 13 && valid_isbn13?(input_string)
-		true
-	else
+		if input_string.length == 10 && non_numeric_characters?(input_string[0...8]) == false
+			valid_isbn10?(input_string)
+		elsif input_string.length == 13 && non_numeric_characters?(input_string) == false
+			valid_isbn13?(input_string)
+		else
 		false
 	end
 end
 
 
-def non_numeric_characters?(invalid_string)
-	if invalid_string[0...8] =~ /\D/ && invalid_string[0...12] =~ /\D/
-			false	
-	else invalid_string[0...8].upcase == "X" 
-			true
-	end
-end 
-# Should I put this function into the valid isbn10?? Showing invalid for 13 but not 10?
-# Somehow x in the middle still passing?? 
+ 
 
 def valid_isbn13?(string)
 	isbn_array_13 = convert_string_to_array(string)
@@ -65,8 +62,7 @@ def multiply_array(input_array)
 		end
 	end
 	array
-end 
-
+end
 
 def sum_of_items(array_of_numbers)
 	sum = 0
