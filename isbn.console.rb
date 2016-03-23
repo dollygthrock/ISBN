@@ -10,7 +10,7 @@ puts "Would you like to validate an ISBN?"
 			else
 			puts "This is not a valid ISBN number." 
 			end
-	end 
+	end
 	if answer.upcase == "NO"
 		puts "Would you like to have a valid ISBN generated?"
 		random_isbn_answer = gets.chomp
@@ -20,14 +20,23 @@ puts "Would you like to validate an ISBN?"
 				puts "Would you like to generate a 10-digit or a 13-digit ISBN (enter 10 or 13)?"
 				answer_type = gets.chomp
 					if answer_type == "10"
-						array_10 = "0123456789- "
-						array_10.sample = isbn_10_to_validate
-						sample_to_validate = valid_isbn(isbn_10_to_validate)
-						puts sample_to_validate
+						array_10 = ["0","1","2","3","4","5","6","7","8","9","0","x","X"," ","-"]
+						split_array = array_10.split("")
+						isbn_10_to_validate = array_10[rand(split_array)]
+						result_10 = valid_isbn(isbn_10_to_validate)
+						puts result_10
+					end
+					else answer_type == "13"
+						array_13 = ["0","1","2","3","4","5","6","7","8","9","0"]
+						isbn_13_to_validate = array_13[rand(array_13.split(""))]
+						if result_13 = valid_isbn(isbn_13_to_validate)
+						puts result_13
 					end
 			end
 	end
 
-								
+
+
+end								
 
 
