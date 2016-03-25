@@ -21,8 +21,10 @@ puts "Would you like to validate an ISBN?"
 				answer_type = gets.chomp
 					if answer_type == "10"
 						array_10 = ["0","1","2","3","4","5","6","7","8","9","0","x","X"," ","-"]
-						split_array = array_10.split("")
-						isbn_10_to_validate = array_10[rand(split_array)]
+							isbn_10_to_validate = array_10.sample
+							while isbn_10_to_validate.count <= 11 do
+								isbn_10_to_validate + array_10.sample
+							end 
 						result_10 = valid_isbn(isbn_10_to_validate)
 						puts result_10
 					end
@@ -36,7 +38,6 @@ puts "Would you like to validate an ISBN?"
 	end
 
 
-
-end								
+							
 
 
