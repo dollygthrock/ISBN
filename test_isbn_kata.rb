@@ -90,4 +90,21 @@ class TestIsbnChecker < Minitest::Test
 		assert_equal(true,non_numeric_characters?("877195x869"))
 	end
 
+	def original_csv
+		File.exist?("input_isbn_file.csv")
+	end 
+
+	def new_csv
+		File.open("duplicate_isbn_examples.csv", 'w')
+		File.exist?("duplicate_isbn_examples.csv")
+	end
+
+	def test_if_files_are_equal
+		assert_equal(false, FileUtils.compare_file("input_isbn_file.csv", "duplicate_isbn_examples.csv"))
+	end 
+
+
+
+
+
 end
